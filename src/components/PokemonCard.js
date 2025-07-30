@@ -70,14 +70,15 @@ const PokemonCard = ({ searchedPokemonDetails, onClearSearch }) => {
               const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
               return (
                 <div key={id}>
-                  <Card className='pokemon-card' shadow="lg" radius={15} padding="sm"
+                  <Card className='pokemon-card' shadow="lg" radius={15} padding={isSmallScreen ? "xs" : "md"}
+                    style={{ width: isSmallScreen ? "100%" : "auto" }}
                     onClick={() => {
                       setSelectedPokemon(item);
                       onClearSearch();
                     }}>
                     <Stack align='center'>
-                      <Image src={imageUrl} w={100} h={100} />
-                      <Text size="1rem" ta="center" tt="capitalize" fw={800} style={{ color: "#091147ff" }}>{item.name}</Text>
+                      <Image src={imageUrl} w={isSmallScreen ? 70 : 100} h={isSmallScreen ? 70 : 100} />
+                      <Text size={isSmallScreen ? "sm" : "1rem"} ta="center" tt="capitalize" fw={800} style={{ color: "#091147ff" }}>{item.name}</Text>
                     </Stack>
                   </Card>
                 </div>
@@ -99,14 +100,15 @@ const PokemonCard = ({ searchedPokemonDetails, onClearSearch }) => {
                 const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
                 return (
                   <div key={id}>
-                    <Card className='pokemon-card' shadow="lg" radius={15} padding="md"
+                    <Card className='pokemon-card' shadow="lg" radius={15} padding={isSmallScreen ? "xs" : "sm"}
+                      style={{ width: isSmallScreen ? "100%" : "auto" }}
                       onClick={() => {
                         setSelectedPokemon(item);
                         onClearSearch();
                       }}>
                       <Stack align='center'>
-                        <Image src={imageUrl} w={100} h={100} />
-                        <Text size="1rem" ta="center" tt="capitalize" fw={800} style={{ color: "#091147ff" }}>{item.name}</Text>
+                        <Image src={imageUrl} w={isSmallScreen ? 50 : 100} h={isSmallScreen ? 50 : 100} />
+                        <Text size={isSmallScreen ? "xs" : "1rem"} ta="center" tt="capitalize" fw={800} style={{ color: "#091147ff" }}>{item.name}</Text>
                       </Stack>
                     </Card>
                   </div>
@@ -114,7 +116,7 @@ const PokemonCard = ({ searchedPokemonDetails, onClearSearch }) => {
               })}
             </SimpleGrid>
             <Pagination total={10} size="xs" radius="xl" color="gray" style={{ display: "flex", justifyContent: "center" }} onChange={setCurrentPage} />
-          </div>
+         </div>
 
           <div style={{
             flex: 1, paddingTop: "40px",
